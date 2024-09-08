@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Admin - Dashboard</ion-title>
+    <ion-title>Listado de Usuarios</ion-title>
     <ion-buttons>
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -8,12 +8,24 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-list>
-    <ion-item *ngFor="let aux of usuarios" [routerLink]="['/details/user-details', aux.email]">
-      <ion-label>
-        <p><b id="tipo">{{ aux.tipo }}</b></p>
-        <h2>{{ aux.email}} </h2>
-      </ion-label>
-    </ion-item>
-  </ion-list>
+  <body style="background-image: url('assets/fondos/background.png'); background-size: cover;">
+    <h1 style="text-align: center;">Usuarios</h1>
+    <ion-list lines="none">
+      <ion-item *ngFor="let aux of usuarios" [routerLink]="['/usuarios', aux.email]">
+        <ion-label>
+          <p><b id="tipo">{{ aux.tipo }}</b></p>
+          <h2>{{ aux.email}} </h2>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+    <h1 style="text-align: center;">Conductores</h1>
+    <ion-list lines="none">
+      <ion-item *ngFor="let aux of conductores" [routerLink]="['/usuarios', aux.email]">
+        <ion-label>
+          <p><b id="tipo">{{ aux.patente }}</b></p>
+          <h2>{{ aux.email}} </h2>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </body>
 </ion-content>

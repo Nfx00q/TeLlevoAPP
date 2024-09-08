@@ -14,7 +14,7 @@ export class ResetpasswordPage {
   generatedCode?: string;
   newPassword?: string;
 
-  constructor(private usuarioService: UsuarioService, private toastController: ToastController, private Router: Router) {}
+  constructor(private usuarioService: UsuarioService, private toastController: ToastController, private Router: Router ) {}
 
   async sendVerificationCode() {
     const user = this.usuarioService.getUsuario().find(u => u.email === this.emailValue);

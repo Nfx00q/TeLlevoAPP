@@ -28,21 +28,26 @@ const routes: Routes = [
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
   },
   {
-    path: 'users',
-    loadChildren: () => import('./pages/users/users.module').then( m => m.UsersPageModule)
-  },
-  {
     path: 'administrador',
     loadChildren: () => import('./pages/administrador/administrador.module').then( m => m.AdministradorPageModule)
+  },
+  {
+    path: 'usuarios',
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./pages/administrador/administrador.module').then( m => m.AdministradorPageModule)
+      },
+      {
+        path: ':email',
+        loadChildren: () => import('./pages/detalle-usuario/detalle-usuario.module').then( m => m.DetalleUsuarioPageModule)
+      }
+    ]
   },
   {
     path: 'resetpassword',
     loadChildren: () => import('./pages/resetpassword/resetpassword.module').then( m => m.ResetpasswordPageModule)
   },
-  {
-    path: 'detalle-usuario',
-    loadChildren: () => import('./pages/detalle-usuario/detalle-usuario.module').then( m => m.DetalleUsuarioPageModule)
-  }
 
 ];
 

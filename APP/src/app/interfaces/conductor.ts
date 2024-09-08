@@ -1,5 +1,6 @@
 export interface Conductor {
     img_conductor?: string;
+    estado?: false;
 
     nombre?: string;
     apellido?: string;

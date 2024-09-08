@@ -26,7 +26,7 @@ export class UsuarioService {
       pass: 'maria123'
     },
     { 
-      img_usuario: 'assets/usuarios/carlos.png',
+      img_usuario: 'assets/usuarios/carlos.jpg',
       email: 'carlos@admin.com', 
       tipo: 'admin', 
       nombre: 'Carlos', 
@@ -34,12 +34,12 @@ export class UsuarioService {
       pass: 'carlos123'
     },
     { 
-      img_usuario: 'assets/usuarios/ana.jpg',
-      email: 'ana@admin.com', 
+      img_usuario: 'assets/usuarios/julio.jpg',
+      email: 'julio@admin.com', 
       tipo: 'admin', 
-      nombre: 'Ana', 
+      nombre: 'Julio', 
       apellido: 'Lopez', 
-      pass: 'ana123'
+      pass: 'julio123'
     },
   ];
   
@@ -48,9 +48,11 @@ export class UsuarioService {
   getUsuario(){
     return this.usuarios;
   }
-  getUsuarioByEmail(){
 
+  getUsuarioByEmail(email: string): Usuario | undefined {
+    return this.usuarios.find(user => user.email === email);
   }
+  
 
   addUsuario(usuario: Usuario){
     this.usuarios.push(usuario)
