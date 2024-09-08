@@ -10,9 +10,17 @@ export class UsuarioService {
 
   usuarios: Usuario[] = [
     { 
+      img_usuario: 'assets/usuarios/luis.jpg',
+      email: 'luis@user.com', 
+      tipo: 'usuario', 
+      nombre: 'Luis', 
+      apellido: 'Gonzalez', 
+      pass: 'luis123'
+    },
+    { 
       img_usuario: 'assets/usuarios/maria.jpg',
-      email: 'maria@admin.com', 
-      tipo: 'admin', 
+      email: 'maria@user.com', 
+      tipo: 'usuario', 
       nombre: 'Maria', 
       apellido: 'Gonzalez', 
       pass: 'maria123'
@@ -33,41 +41,6 @@ export class UsuarioService {
       apellido: 'Lopez', 
       pass: 'ana123'
     },
-    { 
-      email: 'javier@admin.com', 
-      tipo: 'admin', 
-      nombre: 'Javier', 
-      apellido: 'Fernandez', 
-      pass: 'javier123'
-    },
-    { 
-      email: 'lucia@user.com', 
-      tipo: 'usuario', 
-      nombre: 'Lucia', 
-      apellido: 'Perez', 
-      pass: 'lucia123'
-    },
-    { 
-      email: 'diego@user.com', 
-      tipo: 'usuario', 
-      nombre: 'Diego', 
-      apellido: 'Ramirez', 
-      pass: 'diego123'
-    },
-    { 
-      email: 'sofia@user.com', 
-      tipo: 'usuario', 
-      nombre: 'Sofia', 
-      apellido: 'Hernandez', 
-      pass: 'sofia123'
-    },
-    { 
-      email: 'miguel@user.com', 
-      tipo: 'usuario', 
-      nombre: 'Miguel', 
-      apellido: 'Garcia', 
-      pass: 'miguel123'
-    }
   ];
   
   

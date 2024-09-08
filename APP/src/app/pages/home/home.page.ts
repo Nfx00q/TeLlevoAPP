@@ -2,6 +2,8 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import * as L from 'leaflet';
 import { Conductor } from 'src/app/interfaces/conductor';
 import { ConductorService } from 'src/app/services/conductor.service';
+import { Usuario } from 'src/app/interfaces/usuario';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-home',
@@ -10,12 +12,26 @@ import { ConductorService } from 'src/app/services/conductor.service';
 })
 export class HomePage implements OnInit {
 
+  usuarios: Usuario[] = [];
   conductores: Conductor[] = [];
 
-  constructor(private conductorService: ConductorService) {}
+  public tipoUsuario?: string;
+  public emailUsuario?: string;
+  public nombreUsuario?: string;
+
+  constructor(private conductorService: ConductorService, private usuarioService: UsuarioService) {}
 
   ngOnInit(){ 
     this.conductores = this.conductorService.getConductor();
+    this.usuarios = this.usuarioService.getUsuario();
+
+    const usuarioLogin = localStorage.getItem('usuarioLogin');
+    if (usuarioLogin) {
+      const user = JSON.parse(usuarioLogin);
+      this.tipoUsuario = user.tipo;
+      this.emailUsuario = user.email;
+      this.nombreUsuario = user.nombre;
+    }
   }
 
   ngAfterViewInit() {

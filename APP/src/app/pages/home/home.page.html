@@ -13,6 +13,9 @@
 
   <body style="background-image: url('assets/fondos/background.png'); background-size: cover;">
     <div id="map"></div>
+    <div class="welcome-box">
+      <h2>Bienvenid&#64;: {{ nombreUsuario }}</h2>
+    </div>
     <div class="card-buttons">
       <ion-button id="open-reservar" expand="block" style="--background: rgb(56, 0, 56); color: white;">Reservar</ion-button>
       <ion-button id="open-comenzar" expand="block" style="--background: rgb(126, 104, 126); color: rgb(0, 0, 0);">Comenzar viaje</ion-button>
@@ -28,7 +31,7 @@
       </ng-template>
     </ion-modal>
 
-  <ion-modal #modal trigger="open-comenzar" [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.8]" style="--background: rgb(126, 104, 126);">
+  <ion-modal #modal trigger="open-comenzar" [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 1]" style="--background: rgb(126, 104, 126);">
     <ng-template>
       <ion-content>
         <h1 style="text-align: center; background-color:  rgb(58, 0, 58); color: white; font-size: 18px; padding: 8px 0; border-radius: 10px; margin-left: 10px; margin-right: 10px;">

@@ -9,7 +9,7 @@
 
 <ion-content [fullscreen]="true">
   <ion-list>
-    <ion-item *ngFor="let aux of usuarios"  [routerLink]="['/users', aux.email]">
+    <ion-item *ngFor="let aux of usuarios" [routerLink]="['/details/user-details', aux.email]">
       <ion-label>
         <p><b id="tipo">{{ aux.tipo }}</b></p>
         <h2>{{ aux.email}} </h2>
