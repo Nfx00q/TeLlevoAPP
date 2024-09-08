@@ -21,37 +21,43 @@
       <ion-button id="open-comenzar" expand="block" style="--background: rgb(126, 104, 126); color: rgb(0, 0, 0);">Comenzar viaje</ion-button>
     </div>
 
-    <ion-modal #modal trigger="open-reservar" [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.5]" style="--background: rgb(126, 104, 126);">
+    <ion-modal #modal trigger="open-reservar" [initialBreakpoint]="0.25" [breakpoints]="[0, 0.3]" style="--background: rgb(126, 104, 126);">
       <ng-template>
         <ion-content>
+
           <h1 style="text-align: center; background-color:  rgb(58, 0, 58); color: white; font-size: 18px; padding: 8px 0; border-radius: 10px; margin-left: 10px; margin-right: 10px;">
-            Reserva tu vehículo
+            Gestionar reserva
           </h1>
+
+          <ion-datetime-button datetime="datetime"></ion-datetime-button>
+
+          <ion-modal [keepContentsMounted]="true">
+            <ng-template>
+              <ion-datetime id="datetime"></ion-datetime>
+            </ng-template>
+          </ion-modal>
+
+          <ion-button expand="full" style="--background: rgb(37, 0, 37); color: rgb(255, 255, 255); margin-top: 10px;" (click)="reservar()">Reservar</ion-button>
+
         </ion-content>
       </ng-template>
     </ion-modal>
 
-  <ion-modal #modal trigger="open-comenzar" [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 1]" style="--background: rgb(126, 104, 126);">
+  <ion-modal #modal trigger="open-comenzar" [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.58]" style="--background: rgb(126, 104, 126);">
     <ng-template>
       <ion-content>
         <h1 style="text-align: center; background-color:  rgb(58, 0, 58); color: white; font-size: 18px; padding: 8px 0; border-radius: 10px; margin-left: 10px; margin-right: 10px;">
           Comenzar viaje
         </h1>
-        <ion-card>
-          <ion-card-content>
-            <ion-list>
-              <ion-item *ngFor="let conductor of conductores" lines="none">
-                <ion-avatar slot="start">
-                  <img [src]="conductor.img_conductor" alt="{{conductor.nombre}} {{conductor.apellido}}">
-                </ion-avatar>
-                <ion-label>
-                  <h2>{{conductor.nombre}} {{conductor.apellido}}</h2>
-                  <p>{{conductor.marca_veh}} {{ conductor.modelo_veh}}</p>
-                </ion-label>
-              </ion-item>
-            </ion-list>
-          </ion-card-content>
-        </ion-card>
+        <ion-item>
+          <ion-select label="Partida" placeholder="Punto de recogida">
+            <ion-select-option value="apple">Gabriela Poniente & AV. Concha y toro</ion-select-option>
+            <ion-select-option value="banana">Duoc UC - Sede Pirque</ion-select-option>
+            <ion-select-option value="orange">San José de La Estrella & AV. Concha y toro</ion-select-option>
+            <ion-select-option value="orange">AV Departamental & AV. Vicuña Maquena</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-button expand="full" style="--background: rgb(37, 0, 37); color: rgb(255, 255, 255); margin-top: 10px;" (click)="comenzarViaje()">Buscar conductor</ion-button>
       </ion-content>
     </ng-template>
   </ion-modal>

@@ -4,6 +4,7 @@ import { ConductorService } from 'src/app/services/conductor.service';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
+
 @Component({
   selector: 'app-administrador',
   templateUrl: './administrador.page.html',

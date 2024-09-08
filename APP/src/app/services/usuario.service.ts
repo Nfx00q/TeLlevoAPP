@@ -53,7 +53,6 @@ export class UsuarioService {
     return this.usuarios.find(user => user.email === email);
   }
   
-
   addUsuario(usuario: Usuario){
     this.usuarios.push(usuario)
   }

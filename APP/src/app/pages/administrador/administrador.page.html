@@ -9,23 +9,31 @@
 
 <ion-content [fullscreen]="true">
   <body style="background-image: url('assets/fondos/background.png'); background-size: cover;">
-    <h1 style="text-align: center;">Usuarios</h1>
-    <ion-list lines="none">
-      <ion-item *ngFor="let aux of usuarios" [routerLink]="['/usuarios', aux.email]">
-        <ion-label>
-          <p><b id="tipo">{{ aux.tipo }}</b></p>
-          <h2>{{ aux.email}} </h2>
-        </ion-label>
-      </ion-item>
-    </ion-list>
-    <h1 style="text-align: center;">Conductores</h1>
-    <ion-list lines="none">
-      <ion-item *ngFor="let aux of conductores" [routerLink]="['/usuarios', aux.email]">
-        <ion-label>
-          <p><b id="tipo">{{ aux.patente }}</b></p>
-          <h2>{{ aux.email}} </h2>
-        </ion-label>
-      </ion-item>
-    </ion-list>
+    <ion-card>
+      <ion-card-content>
+        <h1 style="text-align: center;">Usuarios</h1>
+        <ion-list lines="none">
+          <ion-item *ngFor="let aux of usuarios" [routerLink]="['/usuarios', aux.email]">
+            <ion-label>
+              <p><b id="tipo">{{ aux.tipo }}</b></p>
+              <h2>{{ aux.email}} </h2>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-content>
+        <h1 style="text-align: center;">Conductores</h1>
+        <ion-list lines="none">
+          <ion-item *ngFor="let aux of conductores" [routerLink]="['/usuarios', aux.email]">
+            <ion-label>
+              <p><b id="tipo">{{ aux.patente }}</b></p>
+              <h2>{{ aux.email}} </h2>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
   </body>
 </ion-content>

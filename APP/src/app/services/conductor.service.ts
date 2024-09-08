@@ -22,6 +22,8 @@ export class ConductorService {
       marca_veh: 'Kia',
       color_veh: 'Negro',
       img_veh: 'assets/vehiculos/kia_morning3.png',
+
+      estado: 'inactivo'
     },
     { 
       img_conductor: 'assets/conductores/maria.jpg',
@@ -36,6 +38,8 @@ export class ConductorService {
       marca_veh: 'Honda',
       color_veh: 'Rojo',
       img_veh: 'assets/vehiculos/honda_civic.png',
+
+      estado: 'inactivo'
     },
     { 
       img_conductor: 'assets/conductores/pedro.jpeg',
@@ -50,20 +54,8 @@ export class ConductorService {
       marca_veh: 'Toyota',
       color_veh: 'Blanco',
       img_veh: 'assets/vehiculos/toyota_corolla.png',
-    },
-    { 
-      img_conductor: 'assets/conductores/ana.png',
-      nombre: 'Ana',
-      apellido: 'Fernandez',
-      rut: '14.567.890-2',
-      edad: '32',
-      email: 'ana@example.com',
-      pass: 'ana123',
-      patente: 'LMN456',
-      modelo_veh: 'Model 3',
-      marca_veh: 'Tesla',
-      color_veh: 'Azul',
-      img_veh: 'assets/vehiculos/tesla_model3.png',
+
+      estado: 'activo'
     },
   ];
 
