@@ -1,0 +1,31 @@
+<ion-content>
+  <body style="background-image: url('assets/fondos/background.png'); background-size: cover;">
+    <div class="box-centered">
+      <ion-card class="login-card">
+        <ion-card-header>
+          <h1><b>Bienvenid&#64;</b></h1>
+          <p>Inicia sesion para ingresar a la aplicación y comenzar a viajar</p>
+        </ion-card-header>
+        <ion-card-content [formGroup]="loginForm">
+          <div class="input-container">
+            <input formControlName="email" [(ngModel)]="emailValue" type="email" placeholder="Correo electrónico" class="custom-input"/>
+          </div>
+          <div class="input-container">
+            <input formControlName="pass" [(ngModel)]="passValue" type="password" placeholder="Contraseña" class="custom-input"/>
+          </div>
+          <div class="fab-container">
+            <ion-fab-button (click)="login()" color="dark">
+              <ion-icon name="arrow-forward"></ion-icon>
+            </ion-fab-button>
+          </div>
+          <ion-card style="margin-top: 15px; padding: 10px 0;">
+            <ion-card-content>
+              <p><a (click)="register()" style="text-decoration: none; color: rgb(58, 0, 58);"><b>No tengo una cuenta</b></a></p>
+              <p><a (click)="goToResetPassword()" style="text-decoration: none; color: rgb(83, 1, 83);"><b>No recuerdo mi contraseña</b></a></p>
+            </ion-card-content>
+          </ion-card>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </body>
+</ion-content>

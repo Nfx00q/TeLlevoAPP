@@ -1,0 +1,58 @@
+<ion-content [fullscreen]="true">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ionic App</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+  </head>
+
+  <body style="background-image: url('assets/fondos/background.png'); background-size: cover;">
+    <div id="map"></div>
+    <div class="card-buttons">
+      <ion-button id="open-reservar" expand="block" style="--background: rgb(56, 0, 56); color: white;">Reservar</ion-button>
+      <ion-button id="open-comenzar" expand="block" style="--background: rgb(126, 104, 126); color: rgb(0, 0, 0);">Comenzar viaje</ion-button>
+    </div>
+
+    <ion-modal #modal trigger="open-reservar" [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.5]" style="--background: rgb(126, 104, 126);">
+      <ng-template>
+        <ion-content>
+          <h1 style="text-align: center; background-color:  rgb(58, 0, 58); color: white; font-size: 18px; padding: 8px 0; border-radius: 10px; margin-left: 10px; margin-right: 10px;">
+            Reserva tu vehículo
+          </h1>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+
+  <ion-modal #modal trigger="open-comenzar" [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.8]" style="--background: rgb(126, 104, 126);">
+    <ng-template>
+      <ion-content>
+        <h1 style="text-align: center; background-color:  rgb(58, 0, 58); color: white; font-size: 18px; padding: 8px 0; border-radius: 10px; margin-left: 10px; margin-right: 10px;">
+          Comenzar viaje
+        </h1>
+        <ion-card>
+          <ion-card-content>
+            <ion-list>
+              <ion-item *ngFor="let conductor of conductores" lines="none">
+                <ion-avatar slot="start">
+                  <img [src]="conductor.img_conductor" alt="{{conductor.nombre}} {{conductor.apellido}}">
+                </ion-avatar>
+                <ion-label>
+                  <h2>{{conductor.nombre}} {{conductor.apellido}}</h2>
+                  <p>{{conductor.marca_veh}} {{ conductor.modelo_veh}}</p>
+                </ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+  
+
+  </body>
+</ion-content>

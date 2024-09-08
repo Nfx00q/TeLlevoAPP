@@ -1,0 +1,56 @@
+.box-centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 95%;
+    transform: translateX(-50%) translateY(-50%);
+
+    .login-card {
+        background-color: rgba(0,0,0,0);
+        box-shadow: none;
+
+        p {
+            text-align: center;
+            color: black;
+        }
+    }
+
+    .login-card h1 {
+        text-align: center;
+        font-size: 25px;
+        color: black;
+        padding: 0;
+        margin: 0;
+    }
+
+    .input-container input,
+    .input-container select {
+        border-radius: 15px;
+        background-color: rgba(0,0,0,0);
+        border: 1px solid black;
+        padding: 10px 20px;
+        width: 100%;
+        margin-bottom: 10px;
+        outline: 0;
+        color: black;
+        font-family: cursive;
+    }
+
+    .input-container input::placeholder,
+    .input-container select::placeholder {
+        color: rgba(0, 0, 0, 0.61);
+        font-size: 12px;
+        font-family: cursive;
+    }
+
+    .fab-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+}
+
+ion-card-content {
+    margin: 0;
+    padding: 0;
+}
