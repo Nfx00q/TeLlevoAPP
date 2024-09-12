@@ -27,6 +27,7 @@ export class HomePage implements OnInit {
   public tipoUsuario?: string;
   public emailUsuario?: string;
   public nombreUsuario?: string;
+  public apellidoUsuario?: string;
 
   constructor(private conductorService: ConductorService, 
     private usuarioService: UsuarioService, 
@@ -44,6 +45,7 @@ export class HomePage implements OnInit {
       this.tipoUsuario = user.tipo;
       this.emailUsuario = user.email;
       this.nombreUsuario = user.nombre;
+      this.apellidoUsuario = user.apellido;
     }
 
   }

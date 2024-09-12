@@ -4,7 +4,6 @@
       <ion-card class="login-card">
         <ion-card-header>
           <h1><b>Registro</b></h1>
-          <p>Seguridad y eficiencia en <br>transporte al alcance de un toque</p>
         </ion-card-header>
         <ion-card-content [formGroup]="registerForm">
           <div class="input-container">
@@ -22,12 +21,12 @@
           <div class="input-container">
             <input formControlName="repass" type="password" placeholder="Repite la contraseña" class="custom-input"/>
           </div>
+          <p style="text-align: center; margin-top: 10px;">¿Tienes una cuenta? <a (click)="login()" style="text-decoration: none; color: rgb(0, 0, 0);"><b>Iniciar sesión</b></a></p>
           <div class="fab-container">
             <ion-fab-button (click)="register()" color="dark">
               <ion-icon name="arrow-forward"></ion-icon>
             </ion-fab-button>
           </div>
-          <p style="text-align: center; margin-top: 10px;">¿Tienes una cuenta? <a (click)="login()" style="text-decoration: none; color: rgb(58, 0, 58);"><b>Iniciar sesión</b></a></p>
         </ion-card-content>
       </ion-card>
     </div>

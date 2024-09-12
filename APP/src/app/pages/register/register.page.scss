@@ -25,20 +25,21 @@
 
     .input-container input {
         border-radius: 20px;
-        background-color: rgba(0,0,0,0);
+        background-color: rgba(0, 0, 0, 0.6);
         border: 0;
         border: 1px solid black;
         padding: 10px 20px;
         width: 100%;
         margin-bottom: 10px;
         outline: 0;
-        color: black;
+        color: rgb(255, 255, 255);
         font-family: cursive;
     }
 
     .input-container input::placeholder {
-        color: rgba(0, 0, 0, 0.61);
+        color: rgba(255, 255, 255, 0.8);
         font-family: cursive;
+        font-size: 12px;
     }
 
     .fab-container {
