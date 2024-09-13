@@ -4,7 +4,6 @@ import { Conductor } from 'src/app/interfaces/conductor';
 import { ConductorService } from 'src/app/services/conductor.service';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
-import { Router } from '@angular/router';
 import { AlertController, ModalController, ToastController } from '@ionic/angular';
 
 @Component({
@@ -52,17 +51,15 @@ export class HomePage implements OnInit {
 
   ngAfterViewInit() {
     setTimeout(() => {
-      // Inicializar el mapa y centrarlo en las coordenadas de Duoc UC sede Puente Alto
+
       var map = L.map('map', {
         zoomControl: false
       }).setView([-33.59805940505581, -70.57816364636162], 15);
 
-      // Añadir la capa de tiles de OpenStreetMap
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 20,
       }).addTo(map);
 
-      // Define el icono personalizado
       var customIcon = L.icon({
         iconUrl: 'assets/icon/instituto.png',
         iconSize: [40, 40],
@@ -92,7 +89,6 @@ export class HomePage implements OnInit {
     });
     toast.present();
 
-    // Cerrar el modal
     const modal = await this.modalController.getTop();
     if (modal) {
       await modal.dismiss();
@@ -123,13 +119,11 @@ export class HomePage implements OnInit {
   }
 
   async buscarConductor() {
-    // Obtener todos los conductores
+
     const conductores = this.conductorService.getConductor();
 
-    // Filtrar los conductores activos
     const conductoresActivos = conductores.filter(conductor => conductor.estado === 'activo');
 
-    // Crear el mensaje para el alert
     let mensaje = '';
     if (conductoresActivos.length > 0) {
       mensaje = conductoresActivos.map(conductor => 
@@ -139,7 +133,6 @@ export class HomePage implements OnInit {
       mensaje = 'No hay conductores activos.';
     }
 
-    // Mostrar el alert
     const alert = await this.alertController.create({
       header: 'Conductores Activos',
       message: mensaje,
