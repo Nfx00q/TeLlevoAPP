@@ -75,13 +75,6 @@ export class RegisterPage implements OnInit {
           tipo: accountType
         });
   
-        const toast = await this.toastController.create({
-          message: 'Usuario registrado con éxito.',
-          duration: 2000,
-          color: 'success'
-        });
-        await toast.present();
-  
         Swal.fire({
           icon: 'success',
           title: 'Registro exitoso!',
