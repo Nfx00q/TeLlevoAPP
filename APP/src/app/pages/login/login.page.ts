@@ -35,40 +35,45 @@ export class LoginPage implements OnInit {
   }
 
   async login() {
-    if (this.loginForm.invalid) {
-      const errorMessages = this.getErrorMessages();
-      for (const message of errorMessages) {
-        this.showErrorToast(message);
+    try {
+      if (this.loginForm.invalid) {
+        const errorMessages = this.getErrorMessages();
+        for (const message of errorMessages) {
+          this.showErrorToast(message);
+        }
+        return;
       }
-      return;
-    }
-
-    const loading = await this.loadingController.create({
-      message: 'Cargando.....',
-      duration: 2000
-    });
-
-    const email = this.emailValue;
-    const pass = this.passValue;
-
-    const aux = this.usuariosServices.getUsuario();
-    const user = aux.find(aux => aux.email === email && aux.pass === pass);
-
-    if (user) {
-      await loading.present();
-      localStorage.setItem('usuarioLogin', JSON.stringify(user));
-
-      setTimeout(async() => {
-        await loading.dismiss();
-        if (user.tipo === 'admin') {
-          this.router.navigate(['/administrador']);
-        } else if (user.tipo === 'usuario') {
-          this.router.navigate(['/home']);
-        } 
-      }, 2000);
-      
-    } else {
-      this.showErrorToast('Usuario o contraseña incorrecta.');
+  
+      const loading = await this.loadingController.create({
+        message: 'Cargando.....',
+        duration: 2000
+      });
+  
+      const email = this.emailValue;
+      const pass = this.passValue;
+  
+      const aux = this.usuariosServices.getUsuario();
+      const user = aux.find(aux => aux.email === email && aux.pass === pass);
+  
+      if (user) {
+        await loading.present();
+        localStorage.setItem('usuarioLogin', JSON.stringify(user));
+  
+        setTimeout(async() => {
+          await loading.dismiss();
+          if (user.tipo === 'admin') {
+            this.router.navigate(['/administrador']);
+          } else if (user.tipo === 'usuario') {
+            this.router.navigate(['/home']);
+          } 
+        }, 2000);
+        
+      } else {
+        this.showErrorToast('Usuario o contraseña incorrecta.');
+      }
+    } catch (error) {
+      this.emailValue = '';
+      this.passValue = '';
     }
   }
 
