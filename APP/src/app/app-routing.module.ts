@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'splashscreen',
+    redirectTo: 'drivers',
     pathMatch: 'full'
   },
   {
@@ -48,6 +48,11 @@ const routes: Routes = [
     path: 'resetpassword',
     loadChildren: () => import('./pages/resetpassword/resetpassword.module').then( m => m.ResetpasswordPageModule)
   },
+  {
+    path: 'drivers',
+    loadChildren: () => import('./pages/drivers/drivers.module').then( m => m.DriversPageModule)
+  },
+
 
 ];
 
