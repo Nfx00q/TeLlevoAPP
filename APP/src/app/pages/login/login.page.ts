@@ -110,4 +110,8 @@ export class LoginPage implements OnInit {
     this.router.navigate(['/resetpassword']); 
   }
 
+  driversVersion(){
+    this.router.navigate(['/drivers']);
+  }
+
 }
