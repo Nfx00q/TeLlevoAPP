@@ -1,9 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import * as L from 'leaflet';
 import { Conductor } from 'src/app/interfaces/conductor';
-import { ConductorService } from 'src/app/services/conductor.service';
 import { Usuario } from 'src/app/interfaces/usuario';
-import { UsuarioService } from 'src/app/services/usuario.service';
 import { AlertController, ModalController, ToastController } from '@ionic/angular';
 
 @Component({
@@ -20,23 +18,17 @@ export class HomePage implements OnInit {
     { lat: -33.66833314724194, lng: -70.58517694562185},
   ];
 
-  usuarios: Usuario[] = [];
-  conductores: Conductor[] = [];
-
   public tipoUsuario?: string;
   public emailUsuario?: string;
   public nombreUsuario?: string;
   public apellidoUsuario?: string;
 
-  constructor(private conductorService: ConductorService, 
-    private usuarioService: UsuarioService, 
+  constructor(
     private toastController: ToastController, 
     private modalController: ModalController,
     private alertController: AlertController) {}
 
   ngOnInit(){ 
-    this.conductores = this.conductorService.getConductor();
-    this.usuarios = this.usuarioService.getUsuario();
 
     const usuarioLogin = localStorage.getItem('usuarioLogin');
     if (usuarioLogin) {
@@ -79,67 +71,4 @@ export class HomePage implements OnInit {
 
     }, 1000);
   }
-
-  async reservar(){
-    const toast = await this.toastController.create({
-      message: 'Reserva gestionada con exito',
-      duration: 2000,
-      color: 'tertiary',
-      position: 'top'
-    });
-    toast.present();
-
-    const modal = await this.modalController.getTop();
-    if (modal) {
-      await modal.dismiss();
-    }
-
-
-  }
-
-  async comenzarViaje(){
-    const toast = await this.toastController.create({
-      message: 'Creando viaje y buscando conductor...',
-      duration: 2000,
-      color: 'dark',
-      position: 'top'
-    });
-    toast.present();
-
-    setTimeout(() => {
-      this.buscarConductor();
-    }, 2000)
-
-    // Cerrar el modal
-    const modal = await this.modalController.getTop();
-    if (modal) {
-      await modal.dismiss();
-    }
-
-  }
-
-  async buscarConductor() {
-
-    const conductores = this.conductorService.getConductor();
-
-    const conductoresActivos = conductores.filter(conductor => conductor.estado === 'activo');
-
-    let mensaje = '';
-    if (conductoresActivos.length > 0) {
-      mensaje = conductoresActivos.map(conductor => 
-        `Nombre: ${conductor.nombre} ${conductor.apellido}, Email: ${conductor.email}, Patente: ${conductor.patente}`
-      ).join('\n');
-    } else {
-      mensaje = 'No hay conductores activos.';
-    }
-
-    const alert = await this.alertController.create({
-      header: 'Conductores Activos',
-      message: mensaje,
-      buttons: ['OK']
-    });
-
-    await alert.present();
-  }
-  
 }

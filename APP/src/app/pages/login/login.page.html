@@ -13,18 +13,18 @@
           <div class="input-container">
             <input formControlName="pass" [(ngModel)]="passValue" type="password" placeholder="Contraseña" class="custom-input"/>
           </div>
-          <p><a (click)="register()" style="text-decoration: none; color: rgb(0, 0, 0);">No tengo una <b>cuenta</b></a></p>
-          <p><a (click)="goToResetPassword()" style="text-decoration: none; color: rgb(0, 0, 0);">No recuerdo <b>mi contraseña</b></a></p>
           <div class="fab-container">
-            <ion-fab-button (click)="login()" color="dark">
+            <ion-fab-button color="dark">
               <ion-icon name="arrow-forward"></ion-icon>
             </ion-fab-button>
           </div>
         </ion-card-content>
-        <ion-button size="block" color="a" style="margin-top: 20px; background-color: rgba(0,0,0,.8); border-radius: 30px;">
-          <a href="#" (click)="driversVersion()" style="text-decoration: none; color: whitesmoke;">Version conductores</a>
+        <ion-button (click)="driversVersion()" size="block" color="a" style="margin-top: 20px; background-color: rgba(0,0,0,.8); border-radius: 30px;">
+          Version conductores
         </ion-button>
+        <p><a (click)="register()" style="text-decoration: none; color: rgb(0, 0, 0);">No tengo una <b>cuenta</b></a></p>
       </ion-card>
     </div>
   </body>
 </ion-content>
+

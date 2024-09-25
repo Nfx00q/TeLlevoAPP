@@ -1,12 +1,6 @@
-import { Injectable } from '@angular/core';
-import { Viajes } from '../interfaces/viajes';
+------------- JSON de viajes -------------
 
-@Injectable({
-  providedIn: 'root'
-})
-export class ViajeService {
-  
-  viajes: Viajes[] = [
+viajes: Viajes[] = [
     { 
         codigo: 'V001', 
         nom_destino: 'Duoc UC Sede Puente Alto', 
@@ -129,25 +123,4 @@ export class ViajeService {
     }
   ];
 
-  constructor() { }
-
-  getViajes(){
-    return this.viajes;
-  }
-
-  getViajesByNombre(){
-
-  }
-
-  addViaje(viaje: Viajes){
-    this.viajes.push(viaje)
-  }
-
-  deleteViaje(){
-
-  }
-
-  updateViaje(){
-
-  }
-}
+--------------------------------------------------------------------------------------------------------

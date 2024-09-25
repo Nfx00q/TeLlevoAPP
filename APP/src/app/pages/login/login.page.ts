@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastController, LoadingController } from '@ionic/angular';
 import { MenuController } from '@ionic/angular';
-import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +20,6 @@ export class LoginPage implements OnInit {
     private formBuilder: FormBuilder, 
     private toastController: ToastController, 
     private loadingController: LoadingController,
-    private usuariosServices: UsuarioService,
     private menuController: MenuController
   ) {
     this.loginForm = this.formBuilder.group({
@@ -34,6 +32,8 @@ export class LoginPage implements OnInit {
     this.menuController.enable(true);
   }
 
+  /* 
+  
   async login() {
     try {
       if (this.loginForm.invalid) {
@@ -62,7 +62,7 @@ export class LoginPage implements OnInit {
         setTimeout(async() => {
           await loading.dismiss();
           if (user.tipo === 'admin') {
-            this.router.navigate(['/administrador']);
+            this.router.navigate(['/admin-dash']);
           } else if (user.tipo === 'usuario') {
             this.router.navigate(['/home']);
           } 
@@ -101,6 +101,8 @@ export class LoginPage implements OnInit {
     });
     await toast.present();
   }
+
+  */
 
   register(){
     this.router.navigate(['/register']);

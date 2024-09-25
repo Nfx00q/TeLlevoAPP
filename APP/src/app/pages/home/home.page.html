@@ -16,52 +16,5 @@
     <div class="welcome-box">
       <h3>Bienvenid&#64;: {{ nombreUsuario }} {{ apellidoUsuario }}</h3>
     </div>
-    <div class="card-buttons">
-      <ion-button id="open-reservar" expand="block" style="--background: rgb(0, 0, 0); color: white;">Reservar</ion-button>
-      <ion-button id="open-comenzar" expand="block" style="--background: rgb(44, 44, 44); color: rgb(255, 255, 255);">Comenzar viaje</ion-button>
-    </div>
-
-    <ion-modal #modal trigger="open-reservar" [initialBreakpoint]="0.22" [breakpoints]="[0, 0.22]" style="--background: rgb(90, 90, 90);">
-      <ng-template>
-        <ion-content>
-
-          <h1 style="text-align: center; background-color:  rgb(0, 0, 0); color: white; font-size: 18px; padding: 8px 0; border-radius: 10px; margin-left: 10px; margin-right: 10px;">
-            Gestionar reserva
-          </h1>
-
-          <ion-datetime-button datetime="datetime"></ion-datetime-button>
-
-          <ion-modal [keepContentsMounted]="true">
-            <ng-template>
-              <ion-datetime id="datetime"></ion-datetime>
-            </ng-template>
-          </ion-modal>
-
-          <ion-button expand="full" style="--background: rgb(0, 0, 0); color: rgb(255, 255, 255); margin-top: 10px;" (click)="reservar()">Reservar</ion-button>
-
-        </ion-content>
-      </ng-template>
-    </ion-modal>
-
-  <ion-modal #modal trigger="open-comenzar" [initialBreakpoint]="0.24" [breakpoints]="[0, 0.24]" style="--background: rgb(94, 94, 94);">
-    <ng-template>
-      <ion-content>
-        <h1 style="text-align: center; background-color:  rgb(0, 0, 0); color: white; font-size: 18px; padding: 8px 0; border-radius: 10px; margin-left: 10px; margin-right: 10px;">
-          Comenzar viaje
-        </h1>
-        <ion-item>
-          <ion-select label="Partida" placeholder="Punto de recogida">
-            <ion-select-option value="apple">Gabriela Poniente & AV. Concha y toro</ion-select-option>
-            <ion-select-option value="banana">Duoc UC - Sede Pirque</ion-select-option>
-            <ion-select-option value="orange">San José de La Estrella & AV. Concha y toro</ion-select-option>
-            <ion-select-option value="orange">AV Departamental & AV. Vicuña Maquena</ion-select-option>
-          </ion-select>
-        </ion-item>
-        <ion-button expand="full" style="--background: rgb(0, 0, 0); color: rgb(255, 255, 255); margin-top: 10px;" (click)="comenzarViaje()">Buscar conductor</ion-button>
-      </ion-content>
-    </ng-template>
-  </ion-modal>
-  
-
   </body>
 </ion-content>

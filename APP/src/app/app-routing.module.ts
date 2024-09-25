@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'drivers',
+    redirectTo: 'splashscreen',
     pathMatch: 'full'
   },
   {
@@ -28,32 +28,17 @@ const routes: Routes = [
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
   },
   {
-    path: 'administrador',
-    loadChildren: () => import('./pages/administrador/administrador.module').then( m => m.AdministradorPageModule)
-  },
-  {
-    path: 'usuarios',
-    children: [
-      {
-        path: '',
-        loadChildren: () => import('./pages/administrador/administrador.module').then( m => m.AdministradorPageModule)
-      },
-      {
-        path: ':email',
-        loadChildren: () => import('./pages/detalle-usuario/detalle-usuario.module').then( m => m.DetalleUsuarioPageModule)
-      }
-    ]
-  },
-  {
-    path: 'resetpassword',
-    loadChildren: () => import('./pages/resetpassword/resetpassword.module').then( m => m.ResetpasswordPageModule)
-  },
-  {
     path: 'drivers',
     loadChildren: () => import('./pages/drivers/drivers.module').then( m => m.DriversPageModule)
   },
-
-
+  {
+    path: 'user-dash',
+    loadChildren: () => import('./pages/users/user-dash/user-dash.module').then( m => m.UserDashPageModule)
+  },
+  {
+    path: 'admin-dash',
+    loadChildren: () => import('./pages/users/admin-dash/admin-dash.module').then( m => m.AdminDashPageModule)
+  },
 ];
 
 @NgModule({
@@ -62,4 +47,5 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule {}
