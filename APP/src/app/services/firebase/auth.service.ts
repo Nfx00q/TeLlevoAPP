@@ -18,5 +18,19 @@ export class AuthService {
   register(email: string, pass: string){
     return this.angularFireAuth.createUserWithEmailAndPassword(email, pass);
   }
+
+  logout() {
+    return this.angularFireAuth.signOut();
+  }
   
+  recoveryPassword(email: string) {
+    return this.angularFireAuth.sendPasswordResetEmail(email)
+    .then(() => {
+      console.log('Correo enviado!');
+    })
+    .catch((error) => {
+      console.log('Error al enviar el correo!');
+      throw error;
+    });
+  }
 }
