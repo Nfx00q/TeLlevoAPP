@@ -105,7 +105,7 @@ export class LoginPage implements OnInit {
   }
 
   driversVersion(){
-    this.router.navigate(['/drivers']);
+    this.router.navigate(['/drivers-login']);
   }
 
 }

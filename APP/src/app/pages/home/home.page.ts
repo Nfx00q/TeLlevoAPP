@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import * as L from 'leaflet';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Usuario } from 'src/app/interfaces/usuario';
@@ -48,7 +48,8 @@ export class HomePage implements OnInit {
       }).setView([-33.59805940505581, -70.57816364636162], 15);
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 20,
+        maxZoom: 18,
+        minZoom: 13
       }).addTo(map);
 
       var customIcon = L.icon({
