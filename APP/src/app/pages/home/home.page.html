@@ -12,6 +12,22 @@
   </head>
 
   <body style="background-image: url('assets/fondos/background.png'); background-size: cover;">
+    <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+      <ion-fab-button color="dark">
+        <ion-icon name="chevron-up-circle"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-list side="top">
+        <ion-fab-button>
+          <ion-icon name="document"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button>
+          <ion-icon name="color-palette"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button>
+          <ion-icon name="globe"></ion-icon>
+        </ion-fab-button>
+      </ion-fab-list>
+    </ion-fab>
     <div id="map"></div>
     <div class="welcome-box">
       <h3>Bienvenid&#64;: {{ nombreUsuario }}</h3>
