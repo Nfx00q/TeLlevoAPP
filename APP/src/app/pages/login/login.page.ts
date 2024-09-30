@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastController, LoadingController } from '@ionic/angular';
+import { LoadingController } from '@ionic/angular';
 import { MenuController } from '@ionic/angular';
+import { Usuario } from 'src/app/interfaces/usuario';
+import { AuthService } from 'src/app/services/firebase/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -12,15 +16,16 @@ import { MenuController } from '@ionic/angular';
 export class LoginPage implements OnInit {
 
   loginForm: FormGroup;
-  emailValue?: string;
-  passValue?: string;
+  emailValue: string = '';
+  passValue: string = '';
 
   constructor(
     private router: Router,
     private formBuilder: FormBuilder, 
-    private toastController: ToastController, 
     private loadingController: LoadingController,
-    private menuController: MenuController
+    private menuController: MenuController,
+    private firestore: AngularFirestore,
+    private authService: AuthService
   ) {
     this.loginForm = this.formBuilder.group({
       email : ['', [Validators.required, Validators.email]],
@@ -29,21 +34,12 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit(){
-    this.menuController.enable(true);
+    this.menuController.enable(false);
   }
-
-  /* 
   
   async login() {
     try {
-      if (this.loginForm.invalid) {
-        const errorMessages = this.getErrorMessages();
-        for (const message of errorMessages) {
-          this.showErrorToast(message);
-        }
-        return;
-      }
-  
+
       const loading = await this.loadingController.create({
         message: 'Cargando.....',
         duration: 2000
@@ -52,26 +48,34 @@ export class LoginPage implements OnInit {
       const email = this.emailValue;
       const pass = this.passValue;
   
-      const aux = this.usuariosServices.getUsuario();
-      const user = aux.find(aux => aux.email === email && aux.pass === pass);
+      const aux = await this.authService.login(email as string, pass as string);
   
-      if (user) {
-        await loading.present();
-        localStorage.setItem('usuarioLogin', JSON.stringify(user));
+      if (aux.user) {
+
+        const usuarioLogin = await this.firestore.collection('usuarios').doc(aux.user.uid).get().toPromise();
+        const usuarioData = usuarioLogin?.data() as Usuario;
+
+        localStorage.setItem('usuarioLogin',email as string);
+        (await loading).present();
   
         setTimeout(async() => {
-          await loading.dismiss();
-          if (user.tipo === 'admin') {
+          (await loading).dismiss();
+          if (usuarioData.tipo === 'admin') {
             this.router.navigate(['/admin-dash']);
-          } else if (user.tipo === 'usuario') {
+          } else if (usuarioData.tipo === 'usuario') {
             this.router.navigate(['/home']);
           } 
         }, 2000);
-        
-      } else {
-        this.showErrorToast('Usuario o contraseña incorrecta.');
       }
     } catch (error) {
+      console.error('Error en el inicio de sesión:', error);
+      Swal.fire({
+        icon:'error',
+        title:'Error',
+        text: 'Hubo un error al iniciar sesión.',
+        confirmButtonText: 'OK',
+        heightAuto: false
+      });
       this.emailValue = '';
       this.passValue = '';
     }
@@ -91,18 +95,6 @@ export class LoginPage implements OnInit {
     }
     return messages;
   }
-
-  async showErrorToast(message: string) {
-    const toast = await this.toastController.create({
-      message,
-      duration: 3000,
-      position: 'bottom',
-      color: 'light'
-    });
-    await toast.present();
-  }
-
-  */
 
   register(){
     this.router.navigate(['/register']);

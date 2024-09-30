@@ -1,8 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import * as L from 'leaflet';
-import { Conductor } from 'src/app/interfaces/conductor';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Usuario } from 'src/app/interfaces/usuario';
-import { AlertController, ModalController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -11,39 +10,39 @@ import { AlertController, ModalController, ToastController } from '@ionic/angula
 })
 export class HomePage implements OnInit {
 
+  usuarios: Usuario[] = [];
+  
   markers = [
-    { lat: -33.5791787663939, lng: -70.58202650110043},
-    { lat: -33.55333862632548, lng: -70.5867276319482},
-    { lat: -33.50828814033571, lng: -70.61039431815159},
-    { lat: -33.66833314724194, lng: -70.58517694562185},
+    { lat: -33.5791787663939, lng: -70.58202650110043 },
+    { lat: -33.55333862632548, lng: -70.5867276319482 },
+    { lat: -33.50828814033571, lng: -70.61039431815159 },
+    { lat: -33.66833314724194, lng: -70.58517694562185 },
   ];
 
-  public tipoUsuario?: string;
-  public emailUsuario?: string;
   public nombreUsuario?: string;
   public apellidoUsuario?: string;
+  usuarioLogin?: string;
 
-  constructor(
-    private toastController: ToastController, 
-    private modalController: ModalController,
-    private alertController: AlertController) {}
+  constructor(private firestore: AngularFirestore) {}
 
-  ngOnInit(){ 
+  ngOnInit() { 
+    this.usuarioLogin = localStorage.getItem('usuarioLogin') || '';
+    this.config();
+  }
 
-    const usuarioLogin = localStorage.getItem('usuarioLogin');
-    if (usuarioLogin) {
-      const user = JSON.parse(usuarioLogin);
-      this.tipoUsuario = user.tipo;
-      this.emailUsuario = user.email;
-      this.nombreUsuario = user.nombre;
-      this.apellidoUsuario = user.apellido;
-    }
-
+  config() {
+    this.firestore.collection('usuarios').valueChanges().subscribe((usuarios: any[]) => {
+      this.usuarios = usuarios;
+      const usuarioEncontrado = this.usuarios.find((usuario) => usuario.email === this.usuarioLogin);
+      if (usuarioEncontrado) {
+        this.nombreUsuario = usuarioEncontrado.nombre;
+        this.apellidoUsuario = usuarioEncontrado.apellido;
+      }
+    });
   }
 
   ngAfterViewInit() {
     setTimeout(() => {
-
       var map = L.map('map', {
         zoomControl: false
       }).setView([-33.59805940505581, -70.57816364636162], 15);
@@ -59,7 +58,7 @@ export class HomePage implements OnInit {
         popupAnchor: [-3, -76] 
       });
 
-      L.marker([-33.598460591168845, -70.57876561786227], { icon: customIcon }).addTo(map)
+      L.marker([-33.598460591168845, -70.57876561786227], { icon: customIcon }).addTo(map);
 
       this.markers.forEach(marker => {
         L.marker([marker.lat, marker.lng])
@@ -68,7 +67,6 @@ export class HomePage implements OnInit {
       });
 
       map.setView([-33.59805940505581, -70.57816364636162], 15);
-
     }, 1000);
   }
 }
