@@ -1,5 +1,5 @@
 <ion-content>
-  <body style="background-image: url('assets/fondos/background.png'); background-size: cover;">
+  <body>
     <div class="box-centered">
       <ion-card class="login-card">
         <ion-card-header>
@@ -17,11 +17,11 @@
             <ion-fab-button color="dark">
               <ion-icon name="arrow-forward"></ion-icon>
             </ion-fab-button>
+            <ion-fab-button (click)="clientesVersion()" color="dark" style="margin-left: 20px;">
+              <ion-icon name="person"></ion-icon>
+            </ion-fab-button>
           </div>
         </ion-card-content>
-        <ion-button (click)="clientesVersion()" size="block" color="a" style="margin-top: 20px; background-color: rgba(0,0,0,.8); border-radius: 30px;">
-          Version clientes
-        </ion-button>
       </ion-card>
     </div>
   </body>

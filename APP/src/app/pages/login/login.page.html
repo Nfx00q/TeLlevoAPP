@@ -1,12 +1,11 @@
 <ion-content>
-  <body style="background-image: url('assets/fondos/background.png'); background-size: cover;">
+  <body>
     <div class="box-centered">
       <ion-card class="login-card">
         <ion-card-header>
-          <h1><b>Bienvenid&#64;</b></h1>
+          <img alt="Silhouette of mountains" src="assets/icon/user.gif" />
         </ion-card-header>
         <ion-card-content [formGroup]="loginForm">
-          <p style="margin-bottom: 10px;">Inicia sesion para ingresar a la aplicación y comenzar a viajar</p>
           <div class="input-container">
             <input formControlName="email" [(ngModel)]="emailValue" type="email" placeholder="Correo electrónico" class="custom-input"/>
           </div>
@@ -17,12 +16,15 @@
             <ion-fab-button color="dark" (click)="login()">
               <ion-icon name="arrow-forward"></ion-icon>
             </ion-fab-button>
+            <!-- Botón con icono de auto -->
+            <ion-fab-button (click)="driversVersion()" color="dark" style="margin-left: 20px;">
+              <ion-icon name="car"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button (click)="register()" color="dark" style="margin-left: 20px;">
+            <ion-icon name="person-add"></ion-icon>
+            </ion-fab-button>
           </div>
         </ion-card-content>
-        <ion-button (click)="driversVersion()" size="block" color="a" style="margin-top: 20px; background-color: rgba(0,0,0,.8); border-radius: 30px;">
-          Version conductores
-        </ion-button>
-        <p><a (click)="register()" style="text-decoration: none; color: rgb(0, 0, 0);">No tengo una <b>cuenta</b></a></p>
       </ion-card>
     </div>
   </body>

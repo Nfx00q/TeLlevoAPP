@@ -38,7 +38,8 @@ const routes: Routes = [
   {
     path: 'admin-dash',
     loadChildren: () => import('./pages/users/admin-dash/admin-dash.module').then( m => m.AdminDashPageModule)
-  },  {
+  },
+  {
     path: 'drivers-login',
     loadChildren: () => import('./pages/drivers-login/drivers-login.module').then( m => m.DriversLoginPageModule)
   },
