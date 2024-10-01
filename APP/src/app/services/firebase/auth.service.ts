@@ -1,5 +1,6 @@
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Injectable({
@@ -7,8 +8,16 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 })
 export class AuthService {
 
-  constructor(private angularFireAuth : AngularFireAuth) { 
+  constructor(private angularFireAuth : AngularFireAuth, private firestore: AngularFirestore) { 
 
+  }
+
+  getUsers(): Observable<any[]> {
+    return this.firestore.collection('usuarios').valueChanges();
+  }
+
+  deleteUser(uid: string) {
+    return this.firestore.collection('usuarios').doc(uid).delete();
   }
 
   login(email: string, pass: string){
@@ -33,4 +42,5 @@ export class AuthService {
       throw error;
     });
   }
+  
 }

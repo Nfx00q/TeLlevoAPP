@@ -43,6 +43,11 @@ const routes: Routes = [
     path: 'drivers-login',
     loadChildren: () => import('./pages/drivers-login/drivers-login.module').then( m => m.DriversLoginPageModule)
   },
+  {
+    path: 'admin',
+    loadChildren: () => import('./pages/admin/admin.module').then( m => m.AdminPageModule)
+  },
+
 
 ];
 

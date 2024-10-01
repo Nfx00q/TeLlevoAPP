@@ -61,7 +61,7 @@ export class LoginPage implements OnInit {
         setTimeout(async() => {
           (await loading).dismiss();
           if (usuarioData.tipo === 'admin') {
-            this.router.navigate(['/admin-dash']);
+            this.router.navigate(['/admin']);
           } else if (usuarioData.tipo === 'usuario') {
             this.router.navigate(['/home']);
           } 

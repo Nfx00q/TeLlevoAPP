@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list [inset]="true" lines=none>
+    <ion-item-sliding *ngFor="let usuario of usuarios">
+      <ion-item [button]="true">
+        <ion-label>
+          <h2>{{ usuario.nombre }} {{ usuario.apellido }}</h2>
+          <p>Email: {{ usuario.email }}</p>
+          <p>Tipo: {{ usuario.tipo }}</p>
+        </ion-label>
+      </ion-item>
+
+      <!-- Opciones del Item (Acciones deslizables) -->
+      <ion-item-options side="end">
+        <!-- Acción para editar usuario -->
+        <ion-item-option color="dark" (click)="editarUsuario(usuario)">
+          <ion-icon slot="icon-only" name="create"></ion-icon>
+        </ion-item-option>
+
+        <!-- Acción para eliminar usuario -->
+        <ion-item-option color="danger" expandable="true" (click)="eliminarUsuario(usuario)">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

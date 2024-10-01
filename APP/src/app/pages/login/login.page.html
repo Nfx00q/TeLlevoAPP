@@ -3,7 +3,7 @@
     <div class="box-centered">
       <ion-card class="login-card">
         <ion-card-header>
-          <img alt="Silhouette of mountains" src="assets/icon/user.gif" />
+          <img alt="Silhouette of mountains" src="assets/icon/user.gif"/>
         </ion-card-header>
         <ion-card-content [formGroup]="loginForm">
           <div class="input-container">
@@ -12,15 +12,15 @@
           <div class="input-container">
             <input formControlName="pass" [(ngModel)]="passValue" type="password" placeholder="Contraseña" class="custom-input"/>
           </div>
-          <div class="fab-container">
+          <div class="fab-container" style="margin-top: 40px;">
             <ion-fab-button color="dark" (click)="login()">
               <ion-icon name="arrow-forward"></ion-icon>
             </ion-fab-button>
             <!-- Botón con icono de auto -->
-            <ion-fab-button (click)="driversVersion()" color="dark" style="margin-left: 20px;">
+            <ion-fab-button (click)="driversVersion()" color="dark" style="margin-left: 30px;">
               <ion-icon name="car"></ion-icon>
             </ion-fab-button>
-            <ion-fab-button (click)="register()" color="dark" style="margin-left: 20px;">
+            <ion-fab-button (click)="register()" color="dark" style="margin-left: 30px;">
             <ion-icon name="person-add"></ion-icon>
             </ion-fab-button>
           </div>
