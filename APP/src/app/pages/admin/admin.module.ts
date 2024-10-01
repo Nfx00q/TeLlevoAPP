@@ -8,6 +8,8 @@ import { AdminPageRoutingModule } from './admin-routing.module';
 
 import { AdminPage } from './admin.page';
 
+import { EditModalComponent } from './edit-modal/edit-modal.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +17,6 @@ import { AdminPage } from './admin.page';
     IonicModule,
     AdminPageRoutingModule
   ],
-  declarations: [AdminPage]
+  declarations: [AdminPage, EditModalComponent]
 })
 export class AdminPageModule {}

@@ -16,6 +16,10 @@ export class AuthService {
     return this.firestore.collection('usuarios').valueChanges();
   }
 
+  async editUser(usuarioId: string, updatedData: any) {
+    await this.firestore.collection('usuarios').doc(usuarioId).update(updatedData);
+  }
+
   deleteUser(uid: string) {
     return this.firestore.collection('usuarios').doc(uid).delete();
   }

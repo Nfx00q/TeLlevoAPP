@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/firebase/auth.service';
 import { AlertController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
+import { EditModalComponent } from './edit-modal/edit-modal.component';
 
 @Component({
   selector: 'app-admin',
@@ -11,7 +13,7 @@ export class AdminPage implements OnInit {
 
   usuarios: any[] = [];
 
-  constructor(private authService: AuthService, private alertController: AlertController) {
+  constructor(private authService: AuthService, private alertController: AlertController, private modalController: ModalController) {
   }
 
   ngOnInit() {
@@ -24,8 +26,21 @@ export class AdminPage implements OnInit {
     });
   }
 
-  editarUsuario(usuario: any) {
-    // TODO:
+  async editarUsuario(usuario: any) {
+    const modal = await this.modalController.create({
+      component: EditModalComponent,
+      componentProps: { usuario } // Pasa el usuario al modal
+    });
+
+    modal.onDidDismiss().then(async (data) => {
+      if (data.data) {
+        // Si se devuelve updatedData, llama al método para editar el usuario
+        await this.authService.editUser(usuario.uid, data.data);
+        this.getUsers(); // Actualiza la lista de usuarios después de editar
+      }
+    });
+
+    return await modal.present();
   }
 
   async eliminarUsuario(usuario: any) {
