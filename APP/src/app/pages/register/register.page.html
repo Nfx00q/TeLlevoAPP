@@ -21,10 +21,12 @@
           <div class="input-container">
             <input formControlName="repass" type="password" placeholder="Repite la contraseña" class="custom-input"/>
           </div>
-          <p style="text-align: center; margin-top: 10px;">¿Tienes una cuenta? <a (click)="login()" style="text-decoration: none; color: rgb(0, 0, 0);"><b>Iniciar sesión</b></a></p>
           <div class="fab-container">
             <ion-fab-button (click)="register()" color="dark">
               <ion-icon name="arrow-forward"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button (click)="login()" color="dark" style="margin-left: 20px;">
+              <ion-icon name="person"></ion-icon>
             </ion-fab-button>
           </div>
         </ion-card-content>
