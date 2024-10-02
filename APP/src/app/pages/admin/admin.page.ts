@@ -34,6 +34,14 @@ export class AdminPage implements OnInit {
     });
   }
 
+  userInfo(usuario: any) {
+    this.router.navigate(['/user-info'], {
+      queryParams: {
+        usuario: JSON.stringify(usuario)
+      }
+    });
+  }
+
   async logout(){
     this.authService.logout();
     this.router.navigate(['/login'])

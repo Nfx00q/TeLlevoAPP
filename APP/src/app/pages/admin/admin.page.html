@@ -18,7 +18,7 @@
   <body>
     <ion-list [inset]="true" lines="none" style="background-color: rgba(0, 0, 0, 0);"> 
       <ion-item-sliding *ngFor="let usuario of usuarios" class="user-item">
-        <ion-item [button]="true" class="inner-item">
+        <ion-item [button]="true" class="inner-item" (click)="userInfo(usuario)">
           <ion-label>
             <h2><b>{{ usuario.nombre }} {{ usuario.apellido }}</b></h2>
             <p style="font-size: 10px;">({{ usuario.uid }})</p>
