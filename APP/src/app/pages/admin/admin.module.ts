@@ -17,6 +17,6 @@ import { EditModalComponent } from './edit-modal/edit-modal.component';
     IonicModule,
     AdminPageRoutingModule
   ],
-  declarations: [AdminPage, EditModalComponent]
+  declarations: [AdminPage, EditModalComponent],
 })
 export class AdminPageModule {}

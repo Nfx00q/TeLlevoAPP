@@ -3,6 +3,8 @@ import { AuthService } from 'src/app/services/firebase/auth.service';
 import { AlertController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { EditModalComponent } from './edit-modal/edit-modal.component';
+import { MenuController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -12,18 +14,29 @@ import { EditModalComponent } from './edit-modal/edit-modal.component';
 export class AdminPage implements OnInit {
 
   usuarios: any[] = [];
+  selectedUsuario: any;
 
-  constructor(private authService: AuthService, private alertController: AlertController, private modalController: ModalController) {
+  constructor(private authService: AuthService, 
+    private alertController: AlertController, 
+    private modalController: ModalController, 
+    private menuController: MenuController,
+    private router: Router) {
   }
 
   ngOnInit() {
     this.getUsers();
+    this.menuController.enable(false);
   }
 
   getUsers() {
     this.authService.getUsers().subscribe(users => {
       this.usuarios = users;
     });
+  }
+
+  async logout(){
+    this.authService.logout();
+    this.router.navigate(['/login'])
   }
 
   async editarUsuario(usuario: any) {

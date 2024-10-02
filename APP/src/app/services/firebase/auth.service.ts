@@ -2,13 +2,16 @@ import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private angularFireAuth : AngularFireAuth, private firestore: AngularFirestore) { 
+  constructor(
+    private angularFireAuth : AngularFireAuth, 
+    private firestore: AngularFirestore,) { 
 
   }
 
