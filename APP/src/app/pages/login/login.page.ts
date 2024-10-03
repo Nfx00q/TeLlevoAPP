@@ -64,7 +64,16 @@ export class LoginPage implements OnInit {
             this.router.navigate(['/admin']);
           } else if (usuarioData.tipo === 'usuario') {
             this.router.navigate(['/home']);
-          } 
+          } else if (usuarioData.tipo === 'conductor'){
+            Swal.fire({
+              icon:'info',
+              title:'Login',
+              text: 'Detectamos que eres conductor, se te redireccionará a el respectivo login.',
+              confirmButtonText: 'OK',
+              heightAuto: false
+            });
+            this.router.navigate(['/drivers-login'])
+          }
         }, 2000);
       }
     } catch (error) {
