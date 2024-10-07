@@ -66,28 +66,27 @@ export class AdminPage implements OnInit {
 
   async eliminarUsuario(usuario: any) {
     const alert = await this.alertController.create({
-      header: 'Confirmar eliminación',
-      message: `¿Estás seguro de que deseas eliminar al usuario?`,
+      header: 'Confirmar deshabilitación',
+      message: `¿Estás seguro de que deseas deshabilitar al usuario?`,
       buttons: [
         {
           text: 'Cancelar',
           role: 'cancel'
         },
         {
-          text: 'Eliminar',
+          text: 'Deshabilitar',
           handler: () => {
             this.authService.deleteUser(usuario.uid)
               .then(() => {
-                console.log('Usuario eliminado correctamente');
+                console.log('Usuario deshabilitado correctamente');
               })
               .catch((error) => {
-                console.error('Error al eliminar usuario:', error);
+                console.error('Error al deshabilitar usuario:', error);
               });
           }
         }
       ]
     });
-
     await alert.present();
   }
 }

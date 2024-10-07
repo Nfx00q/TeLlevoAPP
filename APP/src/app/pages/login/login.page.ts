@@ -39,7 +39,6 @@ export class LoginPage implements OnInit {
   
   async login() {
     try {
-
       const loading = await this.loadingController.create({
         message: 'Cargando.....',
         duration: 2000
@@ -51,36 +50,46 @@ export class LoginPage implements OnInit {
       const aux = await this.authService.login(email as string, pass as string);
   
       if (aux.user) {
-
         const usuarioLogin = await this.firestore.collection('usuarios').doc(aux.user.uid).get().toPromise();
         const usuarioData = usuarioLogin?.data() as Usuario;
-
-        localStorage.setItem('usuarioLogin',email as string);
+  
+        if (usuarioData.disabled) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Cuenta deshabilitada',
+            text: 'Tu cuenta está deshabilitada. Por favor, contacta al soporte.',
+            confirmButtonText: 'OK',
+            heightAuto: false
+          });
+          return;
+        }
+  
+        localStorage.setItem('usuarioLogin', email as string);
         (await loading).present();
   
-        setTimeout(async() => {
+        setTimeout(async () => {
           (await loading).dismiss();
           if (usuarioData.tipo === 'admin') {
             this.router.navigate(['/admin']);
           } else if (usuarioData.tipo === 'usuario') {
             this.router.navigate(['/home']);
-          } else if (usuarioData.tipo === 'conductor'){
+          } else if (usuarioData.tipo === 'conductor') {
             Swal.fire({
-              icon:'info',
-              title:'Login',
+              icon: 'info',
+              title: 'Login',
               text: 'Detectamos que eres conductor, se te redireccionará a el respectivo login.',
               confirmButtonText: 'OK',
               heightAuto: false
             });
-            this.router.navigate(['/drivers-login'])
+            this.router.navigate(['/drivers-login']);
           }
         }, 2000);
       }
     } catch (error) {
       console.error('Error en el inicio de sesión:', error);
       Swal.fire({
-        icon:'error',
-        title:'Error',
+        icon: 'error',
+        title: 'Error',
         text: 'Hubo un error al iniciar sesión.',
         confirmButtonText: 'OK',
         heightAuto: false
@@ -89,6 +98,7 @@ export class LoginPage implements OnInit {
       this.passValue = '';
     }
   }
+  
 
   getErrorMessages(): string[] {
     const messages: string[] = [];

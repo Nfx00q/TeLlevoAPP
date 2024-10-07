@@ -24,7 +24,7 @@ export class AuthService {
   }
 
   deleteUser(uid: string) {
-    return this.firestore.collection('usuarios').doc(uid).delete();
+    return this.firestore.collection('usuarios').doc(uid).update({ disabled: true });
   }
 
   login(email: string, pass: string){
