@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as L from 'leaflet';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Usuario } from 'src/app/interfaces/usuario';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -23,7 +24,7 @@ export class HomePage implements OnInit {
   public apellidoUsuario?: string;
   usuarioLogin?: string;
 
-  constructor(private firestore: AngularFirestore) {}
+  constructor(private firestore: AngularFirestore, private router: Router) {}
 
   ngOnInit() { 
     this.usuarioLogin = localStorage.getItem('usuarioLogin') || '';
@@ -69,5 +70,9 @@ export class HomePage implements OnInit {
 
       map.setView([-33.59805940505581, -70.57816364636162], 15);
     }, 1000);
+  }
+
+  goToConfig(){
+    this.router.navigate(['/config-page'])
   }
 }

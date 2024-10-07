@@ -19,6 +19,10 @@ export class AuthService {
     return this.firestore.collection('usuarios').valueChanges();
   }
 
+  getUserData(uid: string): Observable<any> {
+    return this.firestore.collection('usuarios').doc(uid).valueChanges();
+  }
+
   async editUser(usuarioId: string, updatedData: any) {
     await this.firestore.collection('usuarios').doc(usuarioId).update(updatedData);
   }

@@ -32,14 +32,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/drivers/drivers.module').then( m => m.DriversPageModule)
   },
   {
-    path: 'user-dash',
-    loadChildren: () => import('./pages/users/user-dash/user-dash.module').then( m => m.UserDashPageModule)
-  },
-  {
-    path: 'admin-dash',
-    loadChildren: () => import('./pages/users/admin-dash/admin-dash.module').then( m => m.AdminDashPageModule)
-  },
-  {
     path: 'drivers-login',
     loadChildren: () => import('./pages/drivers-login/drivers-login.module').then( m => m.DriversLoginPageModule)
   },
@@ -51,7 +43,14 @@ const routes: Routes = [
     path: 'user-info',
     loadChildren: () => import('./pages/admin/user-info/user-info.module').then(m => m.UserInfoPageModule)
   },
-
+  {
+    path: 'config-page',
+    loadChildren: () => import('./pages/config-page/config-page.module').then( m => m.ConfigPagePageModule)
+  },
+  {
+    path: 'account',
+    loadChildren: () => import('./pages/config-page/account/account.module').then( m => m.AccountPageModule)
+  },
 ];
 
 @NgModule({
