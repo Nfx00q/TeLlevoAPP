@@ -9,7 +9,7 @@
 <ion-content [fullscreen]="true">
   <h1 style="text-align: center;">Ajustes</h1>
   <ion-list lines="none">
-    <ion-item [button]="true" (click)="goToAccount(usuario)">
+    <ion-item [button]="true" (click)="goToAccount()">
       <ion-icon aria-hidden="true" name="person" slot="start"></ion-icon>
       <ion-label>Mi Cuenta</ion-label>
     </ion-item>
@@ -23,7 +23,7 @@
     </ion-item>
   </ion-list>
   <ion-list lines="none">
-    <ion-item [button]="true">
+    <ion-item [button]="true" (click)="logout()">
       <ion-icon aria-hidden="true" name="log-out" slot="start" color="danger"></ion-icon>
       <ion-label color="danger">Cerrar sesion</ion-label>
     </ion-item>

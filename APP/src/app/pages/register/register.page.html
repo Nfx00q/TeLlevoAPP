@@ -21,6 +21,16 @@
           <div class="input-container">
             <input formControlName="repass" type="password" placeholder="Repite la contraseña" class="custom-input"/>
           </div>
+
+          <!-- Nuevo selector de tipo de cuenta -->
+          <ion-item>
+            <ion-label>Tipo de cuenta</ion-label>
+            <ion-select formControlName="accountType">
+              <ion-select-option value="usuario">Usuario</ion-select-option>
+              <ion-select-option value="conductor">Conductor</ion-select-option>
+            </ion-select>
+          </ion-item>
+
           <div class="fab-container">
             <ion-fab-button (click)="register()" color="dark">
               <ion-icon name="arrow-forward"></ion-icon>
@@ -34,5 +44,3 @@
     </div>
   </body>
 </ion-content>
-
-

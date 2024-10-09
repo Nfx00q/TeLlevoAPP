@@ -23,6 +23,10 @@ export class AuthService {
     return this.firestore.collection('usuarios').doc(uid).valueChanges();
   }
 
+  getCurrentUser() {
+    return this.angularFireAuth.authState;
+  }
+
   async editUser(usuarioId: string, updatedData: any) {
     await this.firestore.collection('usuarios').doc(usuarioId).update(updatedData);
   }

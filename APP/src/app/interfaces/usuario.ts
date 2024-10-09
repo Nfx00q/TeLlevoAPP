@@ -3,7 +3,9 @@ export interface Usuario {
     nombre?: string;
     apellido?: string;
     rut?: string;
+    telefono?: string;
     edad?: string;
+    role?: string;
     email?: string;
     pass?: string;
     tipo?: string;

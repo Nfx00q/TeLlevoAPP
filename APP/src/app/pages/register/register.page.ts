@@ -32,6 +32,7 @@ export class RegisterPage implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       pass: ['', [Validators.required, Validators.minLength(6)]],
       repass: ['', [Validators.required, Validators.minLength(6)]],
+      accountType: ['', [Validators.required]]
     });
   }
 
@@ -48,7 +49,8 @@ export class RegisterPage implements OnInit {
     const email = this.registerForm.get('email')?.value.trim() || '';
     const pass = this.registerForm.get('pass')?.value.trim() || '';
     const repass = this.registerForm.get('repass')?.value || '';
-  
+    const accountType = this.registerForm.get('accountType')?.value || 'usuario'; // Capturar el tipo de cuenta
+    
     if (pass !== repass) {
       const toast = await this.toastController.create({
         message: 'Las contraseñas no coinciden.',
@@ -58,8 +60,6 @@ export class RegisterPage implements OnInit {
       await toast.present();
       return;
     }
-  
-    let accountType = 'usuario';
   
     try {
       const aux = await this.authService.register(email, pass);
@@ -72,13 +72,13 @@ export class RegisterPage implements OnInit {
           apellido: this.registerForm.get('lastName')?.value,
           email: user.email,
           pass: pass,
-          tipo: accountType
+          tipo: accountType // Guardar el tipo de cuenta (usuario o conductor)
         });
   
         Swal.fire({
           icon: 'success',
           title: 'Registro exitoso!',
-          text: 'Usuario registrado con éxito.',
+          text: 'Cuenta registrada con éxito.',
           confirmButtonText: 'Iniciar sesión',
           heightAuto: false
         }).then(() => {
@@ -90,13 +90,12 @@ export class RegisterPage implements OnInit {
       Swal.fire({
         icon: 'error',
         title: 'Hubo un error!',
-        text: 'Error al registrar un nuevo usuario.',
+        text: 'Error al registrar la cuenta.',
         confirmButtonText: 'Reintentar',
         heightAuto: false,
       });
     }
   }
-  
 
   login(){
     this.router.navigate(['/login']);

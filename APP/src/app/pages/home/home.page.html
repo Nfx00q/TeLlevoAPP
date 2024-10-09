@@ -20,7 +20,7 @@
         <ion-fab-button>
           <ion-icon name="document"></ion-icon>
         </ion-fab-button>
-        <ion-fab-button>
+        <ion-fab-button id="open-modal">
           <ion-icon name="car-outline"></ion-icon>
         </ion-fab-button>
         <ion-fab-button (click)="goToConfig()">
@@ -33,4 +33,12 @@
       <h3>Bienvenid&#64;: {{ nombreUsuario }}</h3>
     </div>
   </body>
+
+  <ion-modal #modal trigger="open-modal" [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.5, 0.75]">
+    <ng-template>
+      <ion-content>
+        <h1 style="text-align: center;">Solicitar viaje</h1>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </ion-content>

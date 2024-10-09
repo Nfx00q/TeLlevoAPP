@@ -3,6 +3,7 @@ import * as L from 'leaflet';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +13,7 @@ import { Router } from '@angular/router';
 export class HomePage implements OnInit {
 
   usuarios: Usuario[] = [];
+  presentingElement = null;
   
   markers = [
     { lat: -33.5791787663939, lng: -70.58202650110043 },
@@ -24,7 +26,7 @@ export class HomePage implements OnInit {
   public apellidoUsuario?: string;
   usuarioLogin?: string;
 
-  constructor(private firestore: AngularFirestore, private router: Router) {}
+  constructor(private firestore: AngularFirestore, private router: Router, private modalController: ModalController) {}
 
   ngOnInit() { 
     this.usuarioLogin = localStorage.getItem('usuarioLogin') || '';
