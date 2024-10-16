@@ -17,6 +17,7 @@ export class HomePage implements OnInit {
 
   public nombreUsuario?: string;
   public apellidoUsuario?: string;
+  public img_usuario?: string;
   usuarioLogin?: string;
 
   constructor(private firestore: AngularFirestore, private router: Router, private modalController: ModalController) {}
@@ -33,6 +34,7 @@ export class HomePage implements OnInit {
       if (usuarioEncontrado) {
         this.nombreUsuario = usuarioEncontrado.nombre;
         this.apellidoUsuario = usuarioEncontrado.apellido;
+        this.img_usuario = usuarioEncontrado.img_usuario;
       }
     });
   }

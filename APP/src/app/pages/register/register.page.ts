@@ -16,6 +16,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 export class RegisterPage implements OnInit {
 
   registerForm: FormGroup;
+  accountType: string = 'usuario';
 
   constructor(
     private router: Router,
@@ -99,5 +100,10 @@ export class RegisterPage implements OnInit {
 
   login(){
     this.router.navigate(['/login']);
+  }
+
+  setAccountType(type: string) {
+    this.accountType = type;
+    this.registerForm.controls['accountType'].setValue(type); // Actualiza el valor del formulario si estás usando formControl
   }
 }

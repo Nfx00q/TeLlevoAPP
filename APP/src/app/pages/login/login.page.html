@@ -1,9 +1,9 @@
 <ion-content>
-  <body style="background-color: white;">
+  <body style="background-image: url('assets/fondos/background.png'); background-size: cover;">
     <div class="box-centered">
       <ion-card class="login-card">
         <ion-card-header>
-          <img alt="Silhouette of mountains" src="assets/icon/user.gif"/>
+          <img alt="Credentials" src="assets/icon/credential.png"/>
         </ion-card-header>
         <ion-card-content [formGroup]="loginForm">
           <div class="input-container">
@@ -16,10 +16,6 @@
             <ion-fab-button color="dark" (click)="login()">
               <ion-icon name="arrow-forward"></ion-icon>
             </ion-fab-button>
-            <!-- Botón con icono de auto -->
-            <ion-fab-button (click)="driversVersion()" color="dark" style="margin-left: 30px;">
-              <ion-icon name="car"></ion-icon>
-            </ion-fab-button>
             <ion-fab-button (click)="register()" color="dark" style="margin-left: 30px;">
             <ion-icon name="person-add"></ion-icon>
             </ion-fab-button>
@@ -27,6 +23,13 @@
         </ion-card-content>
       </ion-card>
     </div>
+
+    <ion-fab  slot="fixed" vertical="bottom" horizontal="start">
+      <ion-fab-button (click)="driversVersion()" color="light">
+        <ion-icon name="car"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+    
   </body>
 </ion-content>
 

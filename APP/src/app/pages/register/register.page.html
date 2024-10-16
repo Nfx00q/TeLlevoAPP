@@ -1,35 +1,41 @@
 <ion-content>
-  <body>
+  <body style="background-image: url('assets/fondos/background.png'); background-size: cover;">
     <div class="box-centered">
       <ion-card class="login-card">
         <ion-card-header>
-          <h1><b>Registro</b></h1>
+          <img alt="Credentials" src="assets/icon/credential-add.png"/>
         </ion-card-header>
         <ion-card-content [formGroup]="registerForm">
           <div class="input-container">
-            <input formControlName="firstName" type="text" placeholder="Nombre" class="custom-input"/>
+            <input formControlName="firstName" type="text" placeholder="Nombre"/>
+            <input formControlName="lastName" type="text" placeholder="Apellido"/>
           </div>
           <div class="input-container">
-            <input formControlName="lastName" type="text" placeholder="Apellido" class="custom-input"/>
+            <input formControlName="email" type="email" placeholder="Correo electrónico"/>
           </div>
           <div class="input-container">
-            <input formControlName="email" type="email" placeholder="Correo electrónico" class="custom-input"/>
+            <input formControlName="pass" type="password" placeholder="Contraseña"/>
           </div>
           <div class="input-container">
-            <input formControlName="pass" type="password" placeholder="Contraseña" class="custom-input"/>
-          </div>
-          <div class="input-container">
-            <input formControlName="repass" type="password" placeholder="Repite la contraseña" class="custom-input"/>
+            <input formControlName="repass" type="password" placeholder="Repite la contraseña"/>
           </div>
 
-          <!-- Nuevo selector de tipo de cuenta -->
-          <ion-item>
-            <ion-label>Tipo de cuenta</ion-label>
-            <ion-select formControlName="accountType">
-              <ion-select-option value="usuario">Usuario</ion-select-option>
-              <ion-select-option value="conductor">Conductor</ion-select-option>
-            </ion-select>
-          </ion-item>
+          <ion-grid style="padding: 0;">
+            <ion-row>
+              <ion-col>
+                <ion-item color="aaa" lines="none">
+                  <ion-label position="stacked">Usuario</ion-label>
+                  <ion-toggle color="dark" [checked]="accountType === 'usuario'" (ionChange)="setAccountType('usuario')"></ion-toggle>
+                </ion-item>
+              </ion-col>
+              <ion-col>
+                <ion-item color="aaa" lines="none">
+                  <ion-label position="stacked">Conductor</ion-label>
+                  <ion-toggle color="dark" [checked]="accountType === 'conductor'" (ionChange)="setAccountType('conductor')"></ion-toggle>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
 
           <div class="fab-container">
             <ion-fab-button (click)="register()" color="dark">

@@ -1,9 +1,9 @@
 <ion-content>
-  <body>
+  <body style="background-image: url('assets/fondos/background.png'); background-size: cover;">
     <div class="box-centered">
       <ion-card class="login-card">
         <ion-card-header>
-          <h1><b>Bienvenid&#64;</b></h1>
+          <img alt="Credentials" src="assets/icon/credential.png"/>
         </ion-card-header>
         <ion-card-content [formGroup]="loginForm">
           <div class="input-container">
@@ -23,6 +23,13 @@
         </ion-card-content>
       </ion-card>
     </div>
+
+    <ion-fab slot="fixed" vertical="bottom" horizontal="start">
+      <ion-fab-button (click)="clientesVersion()" color="light" id="hover-trigger">
+        <ion-icon name="person"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
   </body>
 </ion-content>
 
