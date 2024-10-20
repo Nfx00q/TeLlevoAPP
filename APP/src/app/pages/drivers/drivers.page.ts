@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import * as L from 'leaflet';
 
 @Component({
   selector: 'app-drivers',
@@ -18,37 +17,6 @@ export class DriversPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
-  }
-
-  ngAfterViewInit() {
-    setTimeout(() => {
-
-      var map = L.map('map', {
-        zoomControl: false
-      }).setView([-33.59805940505581, -70.57816364636162], 15);
-
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 20,
-      }).addTo(map);
-
-      var customIcon = L.icon({
-        iconUrl: 'assets/icon/instituto.png',
-        iconSize: [40, 40],
-        iconAnchor: [40, 40],
-        popupAnchor: [-3, -76] 
-      });
-
-      L.marker([-33.598460591168845, -70.57876561786227], { icon: customIcon }).addTo(map)
-
-      this.markers.forEach(marker => {
-        L.marker([marker.lat, marker.lng])
-          .addTo(map)
-          .openPopup();
-      });
-
-      map.setView([-33.59805940505581, -70.57816364636162], 15);
-
-    }, 1000);
   }
 
 }

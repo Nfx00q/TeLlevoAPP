@@ -31,8 +31,7 @@
                 "output": "./svg"
               }
             ],
-            "styles": ["src/global.scss", "src/theme/variables.scss", "node_modules/leaflet/dist/leaflet.css"],
-            "scripts": ["node_modules/leaflet/dist/leaflet.js"]
+            "styles": ["src/global.scss", "src/theme/variables.scss"]
           },
           "configurations": {
             "production": {

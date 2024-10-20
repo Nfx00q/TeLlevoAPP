@@ -1,88 +1,75 @@
 ion-content {
-    --background: none;
-  }
+  --background: none;
+}
   
-  #map {
-    height: 100vh;
-    width: 100vw;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-  }
+#map {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
   
-  .card-buttons {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    z-index: 2;
-  }
+.card-buttons {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  z-index: 2;
+}
 
-  .welcome-box {
-    position: absolute;
-    width: 100%;
-    text-align: center;
-    margin-top: 30px;
-    padding: 0 10px;
-    z-index: 3;
+.welcome-box {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+  padding: 0 10px;
+  z-index: 3;
 
-    h3 {
-      margin: 0;
-      padding: 10px 0;
-      font-size: 18px;
-      color: rgb(255, 255, 255);
-      text-shadow: 1px 1px 1px black;
-      font-weight: bolder;
-      border-radius: 20px;
-      
-      background: linear-gradient(270deg, #8a0101, #ffb1b1);
-      background-size: 400% 400%;
-      opacity: .8;
-
-      -webkit-animation: welcomeBackground 14s ease infinite;
-      -moz-animation: welcomeBackground 14s ease infinite;
-      animation: welcomeBackground 14s ease infinite;
-    }    
-  }
-
-  @-webkit-keyframes welcomeBackground {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-  }
-  @-moz-keyframes welcomeBackground {
-      0%{background-position:0% 50%}
-      50%{background-position:100% 50%}
-      100%{background-position:0% 50%}
-  }
-  @keyframes welcomeBackground {
-      0%{background-position:0% 50%}
-      50%{background-position:100% 50%}
-      100%{background-position:0% 50%}
-  }
-  
-  ion-button {
+  h3 {
     margin: 0;
-    margin-bottom: 5px;
-    width: 100%;
+    padding: 10px 0;
+    font-size: 15px;
+    color: rgb(255, 255, 255);
+    font-weight: bolder;
+    border-radius: 5px;
+
+    background-color: rgba(0, 0, 0, 0.8);
+  }    
+}
+  
+ion-button {
+  margin: 0;
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+.iniciarViaje ion-content {
+  background-color: rgba(34, 36, 40, 1);
+
+  h1 {
+    color: white;
   }
 
-  ion-fab-button::part(native) {
-    background-color: #9b2121;
-    border-radius: 15px;
-    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-    color: rgb(255, 255, 255);
+  ion-item {
+    --background: transparent;
+    color: white;
+
+    :hover {
+      color: white;
+      --background: transparent;
+    }
   }
-  
-  ion-fab-button::part(native):hover::after {
-    background-color: #fd4646;
+
+  p {
+    color: rgba(255, 255, 255, 0.658);
+    padding: 5px 10px;
+    font-size: 12px;
+    text-align: center;
   }
-  
-  ion-fab-button::part(native):active::after {
-    background-color: #d36161;
-  }
+}
