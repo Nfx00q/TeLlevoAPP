@@ -77,11 +77,11 @@ export class LoginPage implements OnInit {
             Swal.fire({
               icon: 'info',
               title: 'Login',
-              text: 'Detectamos que eres conductor, se te redireccionará a el respectivo login.',
+              text: 'Detectamos que eres conductor, bienvenid@',
               confirmButtonText: 'OK',
               heightAuto: false
             });
-            this.router.navigate(['/drivers-login']);
+            this.router.navigate(['/drivers']);
           }
         }, 2000);
       }

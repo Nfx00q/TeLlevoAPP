@@ -3,7 +3,8 @@
     <div class="box-centered">
       <ion-card class="login-card">
         <ion-card-header>
-          <img alt="Credentials" src="assets/icon/credential.png"/>
+          <h1>Bienvenid&#64; de vuelta</h1>
+          <p>Seguridad y eficiencia al alcance de un toque</p>
         </ion-card-header>
         <ion-card-content [formGroup]="loginForm">
           <div class="input-container">
@@ -12,24 +13,18 @@
           <div class="input-container">
             <input formControlName="pass" [(ngModel)]="passValue" type="password" placeholder="Contraseña" class="custom-input"/>
           </div>
-          <div class="fab-container">
-            <ion-fab-button color="dark" (click)="login()">
-              <ion-icon name="arrow-forward"></ion-icon>
-            </ion-fab-button>
-            <ion-fab-button (click)="register()" color="dark" style="margin-left: 30px;">
-            <ion-icon name="person-add"></ion-icon>
-            </ion-fab-button>
-          </div>
+          <ion-button expand="block" color="dark" (click)="login()">
+            <ion-icon slot="start" name="arrow-forward"></ion-icon>
+            Iniciar sesion
+          </ion-button>
+          
+          <ion-button expand="block" color="light" (click)="register()" style="margin-top: 10px;">
+            <ion-icon slot="start" name="person-add"></ion-icon>
+            No tengo cuenta
+          </ion-button>
         </ion-card-content>
       </ion-card>
     </div>
-
-    <ion-fab  slot="fixed" vertical="bottom" horizontal="start">
-      <ion-fab-button (click)="driversVersion()" color="light">
-        <ion-icon name="car"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
-    
   </body>
 </ion-content>
 
