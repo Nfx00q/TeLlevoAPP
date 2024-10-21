@@ -38,13 +38,13 @@
 
   </body>
 
-  <ion-modal #modal trigger="open-modal" [initialBreakpoint]="0.30" [breakpoints]="[0, 0.25, 0.5, 0.75]" class="iniciarViaje">
+  <ion-modal #modal trigger="open-modal" [initialBreakpoint]="0.6" [breakpoints]="[0.6]" class="iniciarViaje">
     <ng-template>
       <ion-content>
         <h1 style="text-align: center;">Iniciar viaje</h1>
         <p>Selecciona tu ubicación de inicio y destino para comenzar a buscar un conductor cercano.</p>
   
-        <ion-item>
+        <ion-item lines="none">
           <ion-select [(ngModel)]="ubicacionInicio" (ionChange)="onInicioChange()" label="Ubicación inicio" label-placement="stacked">
             <ion-select-option *ngFor="let ubicacion of ubicaciones" [value]="ubicacion.value">
               {{ ubicacion.label }}
@@ -52,7 +52,7 @@
           </ion-select>
         </ion-item>
         
-        <ion-item>
+        <ion-item lines="none">
           <ion-select [(ngModel)]="ubicacionDestino" label="Ubicación destino" label-placement="stacked">
             <ion-select-option *ngFor="let ubicacion of getOpcionesDestino()" [value]="ubicacion.value">
               {{ ubicacion.label }}
@@ -60,9 +60,20 @@
           </ion-select>
         </ion-item>
   
-        <ion-button expand="full" color="light" style="margin-top: 20px;" (click)="startTrip()">
-          Buscar conductor
-        </ion-button>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="9">
+              <ion-button expand="block" color="dark" (click)="startTrip()">
+                Buscar conductor
+              </ion-button>
+            </ion-col>
+            <ion-col size="3">
+              <ion-button expand="block" color="danger">
+                <ion-icon name="close-circle-outline"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
         
       </ion-content>
     </ng-template>
