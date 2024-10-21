@@ -42,24 +42,24 @@
     <ng-template>
       <ion-content>
         <h1 style="text-align: center;">Iniciar viaje</h1>
-        <p>Selecciona tu ubicacion de Inicio y Destino para comenzar a buscar un conductor cercano.</p>
-
+        <p>Selecciona tu ubicación de inicio y destino para comenzar a buscar un conductor cercano.</p>
+  
         <ion-item>
-          <ion-select label="Ubicacion inicio" label-placement="stacked">
-            <ion-select-option>
-              
+          <ion-select [(ngModel)]="ubicacionInicio" (ionChange)="onInicioChange()" label="Ubicación inicio" label-placement="stacked">
+            <ion-select-option *ngFor="let ubicacion of ubicaciones" [value]="ubicacion.value">
+              {{ ubicacion.label }}
             </ion-select-option>
           </ion-select>
         </ion-item>
         
         <ion-item>
-          <ion-select label="Ubicacion destino" label-placement="stacked">
-            <ion-select-option>
-              
+          <ion-select [(ngModel)]="ubicacionDestino" label="Ubicación destino" label-placement="stacked">
+            <ion-select-option *ngFor="let ubicacion of getOpcionesDestino()" [value]="ubicacion.value">
+              {{ ubicacion.label }}
             </ion-select-option>
           </ion-select>
         </ion-item>
-
+  
         <ion-button expand="full" color="light" style="margin-top: 20px;" (click)="startTrip()">
           Buscar conductor
         </ion-button>
@@ -67,5 +67,6 @@
       </ion-content>
     </ng-template>
   </ion-modal>
+  
   
 </ion-content>
