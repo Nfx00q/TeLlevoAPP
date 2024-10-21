@@ -3,6 +3,8 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { Router } from '@angular/router';
 
+declare var google: any;
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
@@ -18,11 +20,44 @@ export class HomePage implements OnInit, AfterViewInit {
   public img_usuario?: string;
   usuarioLogin?: string;
 
+  map: any;
+
   constructor(private firestore: AngularFirestore, private router: Router) {}
 
   ngOnInit() { 
     this.usuarioLogin = localStorage.getItem('usuarioLogin') || '';
     this.config();
+    this.loadGoogleMaps().then(() => {
+      this.initMap();
+    });
+  }
+
+  initMap() {
+    const mapOptions = {
+      center: { lat: -33.59841000351409, lng: -70.57834513910244 },
+      zoom: 13,
+      disableDefaultUI: true,
+    };
+    
+    this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+  }
+
+  loadGoogleMaps(): Promise<any> {
+    return new Promise((resolve) => {
+      if (typeof google !== 'undefined') {
+        resolve(true);
+      } else {
+        window['googleMapsCallback'] = () => {
+          resolve(true);
+        };
+  
+        const script = document.createElement('script');
+        script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAp4tplN5KEmKIHOV4vyFXuS6KKFsJqESg&callback=googleMapsCallback`;
+        script.async = true;
+        script.defer = true;
+        document.body.appendChild(script);
+      }
+    });
   }
 
   config() {
