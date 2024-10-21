@@ -21,6 +21,10 @@ export class DriversPage implements OnInit {
 
   map: any;
 
+  ubicacionInicio: string | null = null;
+  ubicacionDestino: string | null = null;
+
+
   markers = [
     { lat: -33.5791787663939, lng: -70.58202650110043},
     { lat: -33.55333862632548, lng: -70.5867276319482},
@@ -81,6 +85,27 @@ export class DriversPage implements OnInit {
       label: 'Cede Pirque',
       value: 'pirque'  // Valor para usar en el select
     },
+    {
+      lat: -33.5800609330941,
+      lng: -70.58197464104566,
+      icon: 'assets/icon/stop.png',
+      label: 'TL-1 / Av. Gabriela & Av. Concha y Toro',
+      value: 'tl1'  // Valor para usar en el select
+    },
+    {
+      lat: -33.57426112502435,
+      lng: -70.55495967884225,
+      icon: 'assets/icon/stop.png',
+      label: 'TL-2 / Av. Gabriela Ote. & Av. Camilo Henriquez',
+      value: 'tl2'  // Valor para usar en el select
+    },
+    {
+      lat: -33.56692284768454,
+      lng: -70.63052933119687,
+      icon: 'assets/icon/stop.png',
+      label: 'TL-3 / Av. Observatorio & Av. Sta. Rosa',
+      value: 'tl3'  // Valor para usar en el select
+    },
     
   ];
 
@@ -114,6 +139,29 @@ export class DriversPage implements OnInit {
         infoWindow.open(this.map, marker);
       });
     });
+  }
+  startTrip() {
+    if (this.ubicacionInicio && this.ubicacionDestino) {
+      // Lógica para generar la ruta entre las ubicaciones seleccionadas
+      console.log(`Iniciando viaje de ${this.ubicacionInicio} a ${this.ubicacionDestino}`);
+      // Aquí puedes implementar la lógica para mostrar la ruta o buscar un conductor
+    } else {
+      console.log('Por favor, selecciona ambas ubicaciones.');
+    }
+  }
+  goToConfig() {
+    this.router.navigate(['/config-page']);
+  }
+  onInicioChange() {
+    // Restablece la selección de destino si coincide con la de inicio
+    if (this.ubicacionDestino === this.ubicacionInicio) {
+      this.ubicacionDestino = null;
+    }
+  }
+
+  getOpcionesDestino() {
+    // Filtra las ubicaciones para que no incluyan la de inicio
+    return this.ubicaciones.filter(ubicacion => ubicacion.value !== this.ubicacionInicio);
   }
 
 
