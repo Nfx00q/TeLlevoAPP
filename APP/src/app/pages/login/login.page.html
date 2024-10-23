@@ -1,5 +1,5 @@
 <ion-content>
-  <body style="background-image: url('assets/fondos/background.png'); background-size: cover;">
+  <body style="background-image: url('assets/fondos/background.jpg'); background-size: cover;">
     <div class="box-centered">
       <ion-card class="login-card">
         <ion-card-header>
@@ -14,12 +14,10 @@
             <input formControlName="pass" [(ngModel)]="passValue" type="password" placeholder="Contraseña" class="custom-input"/>
           </div>
           <ion-button expand="block" color="dark" (click)="login()">
-            <ion-icon slot="start" name="arrow-forward"></ion-icon>
             Iniciar sesion
           </ion-button>
           
           <ion-button expand="block" color="light" (click)="register()" style="margin-top: 10px;">
-            <ion-icon slot="start" name="person-add"></ion-icon>
             No tengo cuenta
           </ion-button>
         </ion-card-content>
