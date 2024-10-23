@@ -73,3 +73,15 @@ ion-button {
     text-align: center;
   }
 }
+
+#time-estimate {
+  position: absolute;
+  bottom: 15px; /* Ajusta según sea necesario */
+  right: 15px; /* Ajusta según sea necesario */
+  background-color: rgba(0, 0, 0, 0.9); /* Fondo semi-transparente negro */
+  color: white; /* Color del texto */
+  padding: 10px; /* Espaciado interno */
+  border-radius: 20px; /* Bordes redondeados */
+  z-index: 1000; /* Asegúrate de que esté por encima del mapa */
+  font-size: 16px; /* Ajusta el tamaño de fuente según sea necesario */
+}

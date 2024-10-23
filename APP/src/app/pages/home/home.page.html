@@ -9,11 +9,14 @@
     <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAp4tplN5KEmKIHOV4vyFXuS6KKFsJqESg">
     </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAp4tplN5KEmKIHOV4vyFXuS6KKFsJqESg&libraries=places"></script>
   </head>
 
   <body style="background-image: url('assets/fondos/background.png'); background-size: cover;">
 
     <div id="map" class="map"></div>
+
+    <div id="time-estimate" class="time-estimate"><span id="duration">--</span></div>
 
     <div class="welcome-box">
       <h3>Hola! {{ nombreUsuario }}</h3>
